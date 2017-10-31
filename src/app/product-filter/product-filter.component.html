@@ -1,0 +1,8 @@
+<mat-list>
+  <mat-list-item [class.active]="!category">
+    <a class="sidenav-link" routerLink="/" [class.active]="!category">Todas las Categorías</a>
+  </mat-list-item>
+  <mat-list-item *ngFor="let c of categories$ | async" [class.active]="category == c.$key">
+    <a class="sidenav-link" routerLink="/" [class.active]="category == c.$key" [queryParams]="{ category: c.$key }">{{ c.name }}</a>
+  </mat-list-item>
+</mat-list>

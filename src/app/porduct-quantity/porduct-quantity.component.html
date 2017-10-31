@@ -1,0 +1,11 @@
+<div>
+  <div>
+      <button (click)="removeFromCart()" mat-button>-</button>
+  </div>
+  <div>
+      {{ shoppingCart.getQuantity(product) }} en el carrito
+  </div>
+  <div>
+      <button (click)="addToCart()" mat-button>+</button>
+  </div>
+</div>

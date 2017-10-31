@@ -1,0 +1,54 @@
+<div *ngIf="order">
+    <h2>Pedido {{ order.$key }}</h2>
+    <div class="bold text-right">Fecha: {{ date | date:'dd/MM/yyyy' }}</div>
+    <table>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Total</th>
+      </tr>
+      <tr *ngFor="let item of order.items">
+        <td>{{ item.product.title }}</td>
+        <td>{{ item.quantity}}</td>
+        <td>{{ item.totalPrice }}</td>
+      </tr>
+    </table>
+    <p>
+      <button mat-raised-button color="primary" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#collapseExample" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        <span *ngIf="isCollapsed">Ver</span><span *ngIf="!isCollapsed">Ocultar</span> detalles del pedido
+      </button>
+    </p>
+    <div id="collapseExample" [hidden]="isCollapsed">
+      <mat-card>
+        <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <span class="text-left bold">Nombre:&nbsp;</span>
+            <span class="text-right">
+              {{order.shipping.name}}
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="text-left bold">Ciudad:&nbsp;</span>
+            <span class="text-right">
+              {{order.shipping.city}}
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="text-left bold">Dirección 1:&nbsp;</span>
+            <span class="text-right">
+              {{order.shipping.addressLine1}}
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span class="text-left bold">Dirección 2:&nbsp;</span>
+            <span class="text-right">
+              {{order.shipping.addressLine2}}
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+

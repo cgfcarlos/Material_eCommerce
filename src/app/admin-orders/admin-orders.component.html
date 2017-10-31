@@ -1,0 +1,15 @@
+<h2>Pedidos</h2>
+<div class="example-container mat-elevation-z8">
+  <table class="highlight bordered" *ngIf="orders$ | async as orders">
+    <tr>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let o of orders">
+      <td>{{ o.shipping.name }}</td>
+      <td>{{ o.datePlaced | date:'dd/MM/yyyy'}}</td>
+      <td class="right"><a mat-button color="primary" [routerLink]="['/admin/orders', o.$key]">Ver</a></td>
+    </tr>
+</table>
+</div>

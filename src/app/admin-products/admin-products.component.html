@@ -1,0 +1,26 @@
+<div class="example-header">
+    <a mat-raised-button color="primary" routerLink="/admin/products/new">Nuevo Producto</a>
+</div>
+<div class="example-header">
+  <mat-form-field>
+    <input matInput placeholder="Buscar..." #query (keyup)="filter(query.value)">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <table class="highlight bordered" matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="index">Índice</th>
+      <th mat-sort-header="title">Titulo</th>
+      <th mat-sort-header="price">Precio</th>
+      <th></th>
+    </tr>
+  
+    <tr *ngFor="let product of sortedData; let i = index">
+      <td>{{ i }}</td>
+      <td>{{product.title}}</td>
+      <td>{{product.price}}</td>
+      <td class="right"><a mat-button color="primary" [routerLink]="['/admin/products/', product.$key]">Editar</a></td>
+    </tr>
+  </table>
+</div>

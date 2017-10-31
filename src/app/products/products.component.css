@@ -1,0 +1,10 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.side-btn{
+    margin: 1em;
+    text-align: center;
+}

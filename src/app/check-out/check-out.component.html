@@ -1,0 +1,9 @@
+  <h1>Envío</h1>
+  <div *ngIf="cart$ | async as cart">
+    <div class="example-container">
+        <app-shipping-form [cart]="cart"></app-shipping-form>
+    </div>
+    <div class="card-container">
+        <app-shopping-cart-summary [cart]="cart"></app-shopping-cart-summary>
+    </div>
+  </div>

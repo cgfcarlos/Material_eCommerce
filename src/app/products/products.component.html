@@ -1,0 +1,17 @@
+<mat-sidenav-container class="example-sidenav-container">
+  <mat-sidenav #sidenav [mode]="navMode" opened="false">
+    <app-product-filter></app-product-filter>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content" *ngIf="cart$ | async as cart">
+    <div class="side-btn" *ngIf="!sidenav.opened">
+      <button mat-button type="button" (click)="sidenav.open()">Filtrar</button>
+    </div>
+    <div class="flex-row">
+      <ng-container *ngFor="let p of filteredProducts">
+        <app-product-card [product]="p"  [shopping-cart]="cart"></app-product-card>
+      </ng-container>
+    </div>
+  </div>
+
+</mat-sidenav-container>

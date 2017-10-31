@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="fixed-header">
+      <a routerLink="/" mat-icon-button class="example-icon">
+        <mat-icon >filter_vintage</mat-icon>
+      </a>
+      <a routerLink="/shopping-cart" mat-icon-button class="example-icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+      <mat-chip-list *ngIf="cart$ | async as cart">
+        <mat-chip color="accent" selected="true">{{ cart.totalItemsCount }}</mat-chip>
+      </mat-chip-list>
+      <span class="example-spacer"></span>
+      <ng-template #anonymousUser>
+        <a
+          routerLink="/login"
+          mat-button>
+          Iniciar Sesión
+        </a>
+      </ng-template>
+      <div *ngIf="appUser; else anonymousUser">
+        <button 
+          mat-button
+          [matMenuTriggerFor]="menu">
+          {{ appUser.name }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/my/orders" mat-menu-item>Mis pedidos</a>
+          <ng-container *ngIf="appUser.isAdmin">
+              <a routerLink="/admin/orders" mat-menu-item>Gestionar Pedidos</a>
+              <a routerLink="/admin/products" mat-menu-item>Gestionar Productos</a>
+          </ng-container>
+          <a (click)="logout()" mat-menu-item>Cerrar Sesión</a>
+        </mat-menu>
+      </div>
+  
+</mat-toolbar>

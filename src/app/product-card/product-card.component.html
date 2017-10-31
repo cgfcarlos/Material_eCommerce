@@ -1,0 +1,20 @@
+<mat-card class="example-card container" *ngIf="product.title">
+  <img mat-card-image *ngIf="product.imageUrl" alt="{{ product.title }}" [src]="product.imageUrl">
+  <mat-card-content>
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.price | currency:'EUR':true }}</p>
+  </mat-card-content>
+  <mat-card-footer *ngIf="showActions && shoppingCart">
+    <button
+    class="width-100"
+    *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
+    (click)="addToCart()"
+    mat-button
+    color="primary">Añadir al carrito</button>
+    <ng-template #updateQuantity>
+      <button (click)="removeFromCart()" mat-button color="primary" style="margin-left: 20px;">-</button>
+      {{ shoppingCart.getQuantity(product) }} en el carrito
+      <button (click)="addToCart()" mat-button color="primary">+</button>
+    </ng-template>
+  </mat-card-footer>
+</mat-card>

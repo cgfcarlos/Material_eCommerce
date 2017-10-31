@@ -1,0 +1,14 @@
+.float-right{
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.float-left{
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+.bold {
+    font-weight: bold;
+}

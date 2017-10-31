@@ -1,0 +1,22 @@
+<form #f="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="shipping.name" #name="ngModel" name="name" required>
+    <mat-error *ngIf="name.invalid && name.errors.required">Campo Obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Dirección 1" [(ngModel)]="shipping.addressLine1" #addressLine1="ngModel" name="addressLine1" required>
+    <mat-error *ngIf="addressLine1.invalid && addressLine1.errors.required">Campo Obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Dirección 2" [(ngModel)]="shipping.addressLine2" #addressLine2="ngModel" name="addressLine2">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Ciudad" [(ngModel)]="shipping.city" #city="ngModel" name="city" required>
+    <mat-error *ngIf="city.invalid && city.errors.required">Campo Obligatorio</mat-error> 
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="!f.valid" (click)="placeOrder()">Realizar Pedido</button>
+</form>

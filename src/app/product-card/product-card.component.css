@@ -1,0 +1,23 @@
+.example-card {
+    width: 400px;
+}
+
+.mat-card-footer {
+  text-align: center;
+}
+
+.mat-card-footer > .width-100 {
+  width: 100%;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 992px){
+  .example-card {
+    margin: 0 auto;
+  }
+}
